@@ -47,8 +47,6 @@ namespace Devices {
 
         void startLoop() override;
 
-        void endLoop() override;
-
         bool buttonPressed() const;
 
     protected:

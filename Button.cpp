@@ -11,6 +11,9 @@ void Devices::Button::begin() {
 }
 
 void Devices::Button::startLoop() {
+    BaseArduinoDevice::startLoop();
+
     short buttonState = digitalRead(_buttonPin);
     _stateChanged = buttonState == HIGH;
 }
+

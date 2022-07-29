@@ -16,6 +16,8 @@ void Devices::RotaryEncoder::begin() {
 }
 
 void Devices::RotaryEncoder::startLoop() {
+    BaseArduinoDevice::startLoop();
+
     short currentCounterState = digitalRead(_CLKPin);
 
     if (currentCounterState != _lastCounter && currentCounterState == HIGH) {
@@ -59,6 +61,8 @@ void Devices::PushRotaryEncoder::begin() {
 
 void Devices::PushRotaryEncoder::startLoop() {
     RotaryEncoder::startLoop();
+    _buttonPressed = false;
+
     int btnState = digitalRead(_pushButtonPin);
 
     // If we detect LOW signal, button is pressed
@@ -72,11 +76,6 @@ void Devices::PushRotaryEncoder::startLoop() {
         // Remember last button press event
         _lastButtonPress = millis();
     }
-}
-
-void Devices::PushRotaryEncoder::endLoop() {
-    BaseArduinoDevice::endLoop();
-    _buttonPressed = false;
 }
 
 bool Devices::PushRotaryEncoder::buttonPressed() const {

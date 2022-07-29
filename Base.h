@@ -17,14 +17,14 @@ namespace Devices {
 
         void end();
 
-        virtual void startLoop() = 0;
-
-        virtual void endLoop();
+        virtual void startLoop();
 
         bool statusChanged() const;
 
     protected:
         bool _stateChanged = false;
+
+        void reset();
     };
 }
 

@@ -16,8 +16,6 @@ namespace Devices {
 
         void startLoop() override;
 
-        void endLoop() override;
-
     protected:
         uint8_t _buttonPin;
     };

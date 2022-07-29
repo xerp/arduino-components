@@ -4,14 +4,18 @@
 
 #include "Base.h"
 
-void Devices::BaseArduinoDevice::endLoop() {
-    _stateChanged = false;
-}
-
 bool Devices::BaseArduinoDevice::statusChanged() const {
     return _stateChanged;
 }
 
 void Devices::BaseArduinoDevice::end() {
-    BaseArduinoDevice::~BaseArduinoDevice();
+    this->BaseArduinoDevice::~BaseArduinoDevice();
+}
+
+void Devices::BaseArduinoDevice::startLoop() {
+    BaseArduinoDevice::reset();
+}
+
+void Devices::BaseArduinoDevice::reset() {
+    _stateChanged = false;
 }

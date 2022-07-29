@@ -11,3 +11,7 @@ void Devices::BaseArduinoDevice::endLoop() {
 bool Devices::BaseArduinoDevice::statusChanged() const {
     return _stateChanged;
 }
+
+void Devices::BaseArduinoDevice::end() {
+    BaseArduinoDevice::~BaseArduinoDevice();
+}

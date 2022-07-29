@@ -11,7 +11,11 @@ namespace Devices {
 
     class BaseArduinoDevice {
     public:
+        ~BaseArduinoDevice() = default;
+
         virtual void begin() = 0;
+
+        void end();
 
         virtual void startLoop() = 0;
 

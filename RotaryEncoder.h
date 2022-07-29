@@ -15,7 +15,7 @@ namespace Devices {
         RIGHT = 'R'
     } RotaryDirection;
 
-    class RotaryEncoder : public Devices::BaseArduinoDevice {
+    class RotaryEncoder : public BaseArduinoDevice {
     public:
         RotaryEncoder(uint8_t DTPin, uint8_t CLKPin);
 

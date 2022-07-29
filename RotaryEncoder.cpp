@@ -4,10 +4,10 @@
 
 #include "RotaryEncoder.h"
 
-Devices::RotaryEncoderDevice::RotaryEncoderDevice(uint8_t DTPin, uint8_t CLKPin) : _DTPin(DTPin),
-                                                                                   _CLKPin(CLKPin) {}
+Devices::RotaryEncoder::RotaryEncoder(uint8_t DTPin, uint8_t CLKPin) : _DTPin(DTPin),
+                                                                       _CLKPin(CLKPin) {}
 
-void Devices::RotaryEncoderDevice::begin() {
+void Devices::RotaryEncoder::begin() {
     pinMode(_DTPin, INPUT);
     pinMode(_CLKPin, INPUT);
 
@@ -15,7 +15,7 @@ void Devices::RotaryEncoderDevice::begin() {
     _lastCounter = digitalRead(_CLKPin);
 }
 
-void Devices::RotaryEncoderDevice::startLoop() {
+void Devices::RotaryEncoder::startLoop() {
     short currentCounterState = digitalRead(_CLKPin);
 
     if (currentCounterState != _lastCounter && currentCounterState == HIGH) {
@@ -37,28 +37,28 @@ void Devices::RotaryEncoderDevice::startLoop() {
     delay(1);
 }
 
-unsigned short Devices::RotaryEncoderDevice::getCurrentCounter() const {
+unsigned short Devices::RotaryEncoder::getCurrentCounter() const {
     return _currentCounter;
 }
 
-Devices::RotaryDirection Devices::RotaryEncoderDevice::getDirection() {
+Devices::RotaryDirection Devices::RotaryEncoder::getDirection() {
     return _direction;
 }
 
-Devices::RotaryEncoderDevice::~RotaryEncoderDevice() {
+Devices::RotaryEncoder::~RotaryEncoder() {
     _direction = UNDEFINED;
 }
 
-Devices::PushRotaryEncoderDevice::PushRotaryEncoderDevice(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin)
-        : RotaryEncoderDevice(DTPin, CLKPin), _pushButtonPin(pushButtonPin) {}
+Devices::PushRotaryEncoder::PushRotaryEncoder(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin)
+        : RotaryEncoder(DTPin, CLKPin), _pushButtonPin(pushButtonPin) {}
 
-void Devices::PushRotaryEncoderDevice::begin() {
-    RotaryEncoderDevice::begin();
+void Devices::PushRotaryEncoder::begin() {
+    RotaryEncoder::begin();
     pinMode(_pushButtonPin, INPUT_PULLUP);
 }
 
-void Devices::PushRotaryEncoderDevice::startLoop() {
-    RotaryEncoderDevice::startLoop();
+void Devices::PushRotaryEncoder::startLoop() {
+    RotaryEncoder::startLoop();
     int btnState = digitalRead(_pushButtonPin);
 
     // If we detect LOW signal, button is pressed
@@ -74,11 +74,11 @@ void Devices::PushRotaryEncoderDevice::startLoop() {
     }
 }
 
-void Devices::PushRotaryEncoderDevice::endLoop() {
+void Devices::PushRotaryEncoder::endLoop() {
     BaseArduinoDevice::endLoop();
     _buttonPressed = false;
 }
 
-bool Devices::PushRotaryEncoderDevice::buttonPressed() const {
+bool Devices::PushRotaryEncoder::buttonPressed() const {
     return _buttonPressed;
 }

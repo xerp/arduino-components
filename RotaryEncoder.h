@@ -15,11 +15,11 @@ namespace Devices {
         RIGHT = 'R'
     } RotaryDirection;
 
-    class RotaryEncoderDevice : public Devices::BaseArduinoDevice {
+    class RotaryEncoder : public Devices::BaseArduinoDevice {
     public:
-        RotaryEncoderDevice(uint8_t DTPin, uint8_t CLKPin);
+        RotaryEncoder(uint8_t DTPin, uint8_t CLKPin);
 
-        virtual ~RotaryEncoderDevice();
+        virtual ~RotaryEncoder();
 
         void begin() override;
 
@@ -39,9 +39,9 @@ namespace Devices {
         short _lastCounter = 0;
     };
 
-    class PushRotaryEncoderDevice : public RotaryEncoderDevice {
+    class PushRotaryEncoder : public RotaryEncoder {
     public:
-        PushRotaryEncoderDevice(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin);
+        PushRotaryEncoder(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin);
 
         void begin() override;
 

@@ -1,7 +1,3 @@
-//
-// Created by Santiago de Pedro on 29/7/22.
-//
-
 #include "Button.h"
 
 Devices::Button::Button(uint8_t buttonPin) : _buttonPin(buttonPin) {}

@@ -1,9 +1,5 @@
-//
-// Created by Santiago de Pedro on 28/7/22.
-//
-
-#ifndef COMPONENTS_ROTARYENCODER_H
-#define COMPONENTS_ROTARYENCODER_H
+#ifndef ROTARYENCODER_H
+#define ROTARYENCODER_H
 
 #include "Base.h"
 
@@ -30,8 +26,8 @@ namespace Devices {
         RotaryDirection getDirection();
 
     protected:
-        uint8_t _DTPin;
-        uint8_t _CLKPin;
+        uint8_t _DTPin{};
+        uint8_t _CLKPin{};
 
     private:
         unsigned short _currentCounter = 0;
@@ -50,12 +46,12 @@ namespace Devices {
         bool buttonPressed() const;
 
     protected:
-        uint8_t _pushButtonPin;
+        uint8_t _pushButtonPin{};
 
     private:
-        bool _buttonPressed;
+        bool _buttonPressed{};
         unsigned long _lastButtonPress = 0;
     };
 }
 
-#endif //COMPONENTS_ROTARYENCODER_H
+#endif //ROTARYENCODER_H

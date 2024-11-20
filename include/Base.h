@@ -1,14 +1,9 @@
-//
-// Created by Santiago de Pedro on 28/7/22.
-//
+#ifndef BASE_H
+#define BASE_H
 
-#ifndef COMPONENTS_BASE_H
-#define COMPONENTS_BASE_H
-
-#include "Arduino.h"
+#include "Arch.h"
 
 namespace Devices {
-
     class BaseArduinoDevice {
     public:
         ~BaseArduinoDevice() = default;
@@ -28,4 +23,4 @@ namespace Devices {
     };
 }
 
-#endif //COMPONENTS_BASE_H
+#endif //BASE_H

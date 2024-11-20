@@ -1,7 +1,3 @@
-//
-// Created by Santiago de Pedro on 28/7/22.
-//
-
 #include "RotaryEncoder.h"
 
 Devices::RotaryEncoder::RotaryEncoder(uint8_t DTPin, uint8_t CLKPin) : _DTPin(DTPin),
@@ -24,12 +20,12 @@ void Devices::RotaryEncoder::startLoop() {
 
         // Encoder is rotating CW so increment
         if (digitalRead(_DTPin) != currentCounterState) {
-            _direction = RotaryDirection::RIGHT;
+            _direction = RIGHT;
             if (_currentCounter < 100)
                 _currentCounter++;
         } else {
             // If the DT state is different from the CLK state then the encoder is rotating CCW so decrement
-            _direction = RotaryDirection::LEFT;
+            _direction = LEFT;
             if (_currentCounter > 0)
                 _currentCounter--;
         }

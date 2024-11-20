@@ -1,7 +1,3 @@
-//
-// Created by Santiago de Pedro on 28/7/22.
-//
-
 #include "Base.h"
 
 bool Devices::BaseArduinoDevice::statusChanged() const {
@@ -9,11 +5,11 @@ bool Devices::BaseArduinoDevice::statusChanged() const {
 }
 
 void Devices::BaseArduinoDevice::end() {
-    this->BaseArduinoDevice::~BaseArduinoDevice();
+    this->~BaseArduinoDevice();
 }
 
 void Devices::BaseArduinoDevice::startLoop() {
-    BaseArduinoDevice::reset();
+    reset();
 }
 
 void Devices::BaseArduinoDevice::reset() {

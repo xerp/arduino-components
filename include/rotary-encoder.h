@@ -1,10 +1,9 @@
-#ifndef ROTARYENCODER_H
-#define ROTARYENCODER_H
+#ifndef ROTARY_ENCODER_H
+#define ROTARY_ENCODER_H
 
-#include "Base.h"
+#include "base.h"
 
 namespace Devices {
-
     typedef enum {
         UNDEFINED = 0,
         LEFT = 'L',
@@ -13,26 +12,26 @@ namespace Devices {
 
     class RotaryEncoder : public BaseArduinoDevice {
     public:
-        RotaryEncoder(uint8_t DTPin, uint8_t CLKPin);
+        RotaryEncoder(uint8_t dtPin, uint8_t clkPin);
 
-        virtual ~RotaryEncoder();
+        ~RotaryEncoder() override;
 
         void begin() override;
 
         void startLoop() override;
 
-        unsigned short getCurrentCounter() const;
+        uint16_t getCurrentCounter() const;
 
-        RotaryDirection getDirection();
+        RotaryDirection getDirection() const;
 
     protected:
-        uint8_t _DTPin{};
-        uint8_t _CLKPin{};
+        uint8_t _dtPin{};
+        uint8_t _clkPin{};
 
     private:
-        unsigned short _currentCounter = 0;
+        uint16_t _currentCounter = 0;
         RotaryDirection _direction = UNDEFINED;
-        short _lastCounter = 0;
+        int32_t _lastCounter = 0;
     };
 
     class PushRotaryEncoder : public RotaryEncoder {
@@ -43,15 +42,15 @@ namespace Devices {
 
         void startLoop() override;
 
-        bool buttonPressed() const;
+        boolean buttonPressed() const;
 
     protected:
         uint8_t _pushButtonPin{};
 
     private:
-        bool _buttonPressed{};
-        unsigned long _lastButtonPress = 0;
+        boolean _buttonPressed{};
+        ulong_t _lastButtonPress = 0;
     };
 }
 
-#endif //ROTARYENCODER_H
+#endif //ROTARY_ENCODER_H

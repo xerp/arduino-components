@@ -1,7 +1,8 @@
 set(SOURCES
-        Base.cpp
-        Button.cpp
-        RotaryEncoder.cpp)
+        arch.cpp
+        base.cpp
+        button.cpp
+        rotary-encoder.cpp)
 
 
 add_library(ArduinoComponents SHARED ${SOURCES})

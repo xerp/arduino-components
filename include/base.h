@@ -1,23 +1,23 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include "Arch.h"
+#include "arch.h"
 
 namespace Devices {
     class BaseArduinoDevice {
     public:
-        ~BaseArduinoDevice() = default;
+        virtual ~BaseArduinoDevice() = default;
 
-        virtual void begin() = 0;
+        virtual void begin();
 
         void end();
 
         virtual void startLoop();
 
-        bool statusChanged() const;
+        boolean statusChanged() const;
 
     protected:
-        bool _stateChanged = false;
+        boolean _stateChanged = false;
 
         void reset();
     };

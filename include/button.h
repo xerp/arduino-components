@@ -1,16 +1,12 @@
-//
-// Created by Santiago de Pedro on 29/7/22.
-//
-
 #ifndef BUTTON_H
 #define BUTTON_H
 
-#include "Base.h"
+#include "base.h"
 
 namespace Devices {
     class Button : public BaseArduinoDevice {
     public:
-        Button(uint8_t buttonPin);
+        explicit Button(uint8_t buttonPin);
 
         void begin() override;
 

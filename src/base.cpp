@@ -1,4 +1,4 @@
-#include "Base.h"
+#include "base.h"
 
 bool Devices::BaseArduinoDevice::statusChanged() const {
     return _stateChanged;

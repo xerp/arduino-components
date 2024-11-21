@@ -1,7 +1,7 @@
 #ifndef BASE_H
 #define BASE_H
 
-#include "arch.h"
+#include "arch/base.h"
 
 namespace Devices {
     class BaseArduinoDevice {

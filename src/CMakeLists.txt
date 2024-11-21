@@ -1,4 +1,5 @@
 set(SOURCES
+        ../arch/base.cpp
         base.cpp
         button.cpp
         rotary-encoder.cpp)

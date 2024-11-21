@@ -12,7 +12,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 include_directories(${CMAKE_SOURCE_DIR})
 
 # Add a subdirectory for source files
-add_subdirectory(${PROJECT_SOURCE_DIR}/arch)
 add_subdirectory(${PROJECT_SOURCE_DIR}/src)
 
 # Specify include directories for the library

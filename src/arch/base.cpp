@@ -43,19 +43,19 @@ void board_set_delay_function(void (*delayFunction)(ulong_t)) {
 // Internal Functions
 
 void board_set_pin_mode(uint8_t pin, uint8_t mode) {
-    if (board->pinMode != None) {
+    if (board != None && board->pinMode != None) {
         board->pinMode(pin, mode);
     }
 }
 
 void board_set_digital_write(uint8_t pin, uint8_t value) {
-    if (board->digitalWrite != None) {
+    if (board != None && board->digitalWrite != None) {
         board->digitalWrite(pin, value);
     }
 }
 
 int32_t board_get_digital_read(uint8_t pin) {
-    if (board->digitalRead != None) {
+    if (board != None && board->digitalRead != None) {
         return board->digitalRead(pin);
     }
 
@@ -63,7 +63,7 @@ int32_t board_get_digital_read(uint8_t pin) {
 }
 
 ulong_t board_get_millis() {
-    if (board->millis != None) {
+    if (board != None && board->millis != None) {
         return board->millis();
     }
 
@@ -71,7 +71,7 @@ ulong_t board_get_millis() {
 }
 
 ulong_t board_get_micros() {
-    if (board->micros != None) {
+    if (board != None && board->micros != None) {
         return board->micros();
     }
 
@@ -79,7 +79,7 @@ ulong_t board_get_micros() {
 }
 
 void board_delay(ulong_t value) {
-    if (board->delay != None) {
+    if (board != None && board->delay != None) {
         board->delay(value);
     }
 }

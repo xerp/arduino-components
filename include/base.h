@@ -6,13 +6,13 @@
 namespace Devices {
     class BaseArduinoDevice {
     public:
-        virtual ~BaseArduinoDevice() = default;
+        ~BaseArduinoDevice() = default;
 
-        virtual void begin();
+        void begin();
 
         void end();
 
-        virtual void startLoop();
+        void startLoop();
 
         boolean statusChanged() const;
 

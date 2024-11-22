@@ -4,7 +4,7 @@
 Devices::Button::Button(uint8_t buttonPin) : _buttonPin(buttonPin) {
 }
 
-void Devices::Button::begin() {
+void Devices::Button::begin() const {
     board_set_pin_mode(_buttonPin, INPUT);
 }
 

@@ -8,9 +8,9 @@ namespace Devices {
     public:
         explicit Button(uint8_t buttonPin);
 
-        void begin() override;
+        void begin() const;
 
-        void startLoop() override;
+        void startLoop();
 
     protected:
         uint8_t _buttonPin{};

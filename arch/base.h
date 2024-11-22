@@ -5,7 +5,7 @@
 #include "arch/macros.h"
 
 typedef struct Board {
-    char *name;
+    const char *name;
 
     void (*pinMode)(uint8_t, uint8_t);
 
@@ -20,9 +20,9 @@ typedef struct Board {
     ulong_t (*micros)();
 } Board;
 
-Board *board;
+void board_init(const char *name);
 
-void board_init(char name[]);
+const char *board_get_name();
 
 void board_set_pin_mode_function(void (*pinModeFunction)(uint8_t, uint8_t));
 

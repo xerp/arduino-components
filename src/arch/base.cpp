@@ -1,8 +1,19 @@
 #include "arch/base.h"
 #include "arch/base-internal.h"
 
-void board_init(char name[]) {
+Board *board;
+
+void board_init(const char *name) {
+    board = new Board();
     board->name = name;
+}
+
+const char *board_get_name() {
+    if (board != None && board->name != None) {
+        return board->name;
+    }
+
+    return "";
 }
 
 void board_set_pin_mode_function(void (*pinModeFunction)(uint8_t, uint8_t)) {

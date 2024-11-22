@@ -8,14 +8,20 @@ project(ArduinoComponents)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-# Include all header files
+# Include all header files from the root directory of the source
 include_directories(${CMAKE_SOURCE_DIR})
 
-# Add a subdirectory for source files
-add_subdirectory(${PROJECT_SOURCE_DIR}/src)
+file(GLOB_RECURSE SOURCE_FILES "src/*.cpp")
+
+add_library(ArduinoComponentLibraries SHARED ${SOURCE_FILES})
 
 # Specify include directories for the library
-target_include_directories(ArduinoComponents
+target_include_directories(ArduinoComponentLibraries
         PUBLIC
         ${PROJECT_SOURCE_DIR}/include
         ${PROJECT_SOURCE_DIR}/arch)
+
+
+add_executable(main src/main.cpp)
+
+target_link_libraries(main PRIVATE ArduinoComponentLibraries)

@@ -14,15 +14,15 @@ namespace Devices {
     public:
         RotaryEncoder(uint8_t dtPin, uint8_t clkPin);
 
-        ~RotaryEncoder() override;
+        void begin();
 
-        void begin() override;
-
-        void startLoop() override;
+        void startLoop();
 
         uint16_t getCurrentCounter() const;
 
         RotaryDirection getDirection() const;
+
+        ~RotaryEncoder();
 
     protected:
         uint8_t _dtPin{};
@@ -38,9 +38,9 @@ namespace Devices {
     public:
         PushRotaryEncoder(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin);
 
-        void begin() override;
+        void begin();
 
-        void startLoop() override;
+        void startLoop();
 
         boolean buttonPressed() const;
 

@@ -6,7 +6,7 @@ using Devices::Button;
 
 Button button(1);
 
-void pin_mode_callback(uint8_t pin, uint8_t mode) {
+void pin_mode_callback(uint8_t pin,  uint8_t mode) {
     printf("Pin :%d mode :%d\n", pin, mode);
 }
 
@@ -24,11 +24,9 @@ int main(int argc, char **argv) {
     button.begin();
     printf("%s\n", board_get_name());
 
-    while (true) {
-        button.startLoop();
-        printf("status :%d\n", button.statusChanged());
-        sleep(2);
-    }
+    button.startLoop();
+    printf("status :%d\n", button.statusChanged());
+    sleep(2);
 
     return 0;
 }

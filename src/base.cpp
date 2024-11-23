@@ -1,17 +1,19 @@
 #include "base.h"
 
-bool Devices::BaseArduinoDevice::statusChanged() const {
+using Devices::BaseArduinoDevice;
+
+bool BaseArduinoDevice::statusChanged() const {
     return _stateChanged;
 }
 
-void Devices::BaseArduinoDevice::end() {
+void BaseArduinoDevice::end() {
     this->~BaseArduinoDevice();
 }
 
-void Devices::BaseArduinoDevice::startLoop() {
+void BaseArduinoDevice::startLoop() {
     reset();
 }
 
-void Devices::BaseArduinoDevice::reset() {
+void BaseArduinoDevice::reset() {
     _stateChanged = false;
 }

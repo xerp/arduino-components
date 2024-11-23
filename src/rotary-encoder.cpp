@@ -1,10 +1,14 @@
 #include "rotary-encoder.h"
 #include "arch/base-internal.h"
 
-Devices::RotaryEncoder::RotaryEncoder(uint8_t dtPin, uint8_t clkPin) : _dtPin(dtPin), _clkPin(clkPin) {
+using Devices::RotaryEncoder;
+using Devices::PushRotaryEncoder;
+using Devices::RotaryDirection;
+
+RotaryEncoder::RotaryEncoder(uint8_t dtPin, uint8_t clkPin) : _dtPin(dtPin), _clkPin(clkPin) {
 }
 
-void Devices::RotaryEncoder::begin() {
+void RotaryEncoder::begin() {
     board_set_pin_mode(_dtPin, INPUT);
     board_set_pin_mode(_clkPin, INPUT);
 
@@ -12,7 +16,7 @@ void Devices::RotaryEncoder::begin() {
     _lastCounter = board_get_digital_read(_clkPin);
 }
 
-void Devices::RotaryEncoder::startLoop() {
+void RotaryEncoder::startLoop() {
     BaseArduinoDevice::startLoop();
 
     int32_t currentCounterState = board_get_digital_read(_clkPin);
@@ -35,28 +39,28 @@ void Devices::RotaryEncoder::startLoop() {
     board_delay(1);
 }
 
-unsigned short Devices::RotaryEncoder::getCurrentCounter() const {
+unsigned short RotaryEncoder::getCurrentCounter() const {
     return _currentCounter;
 }
 
-Devices::RotaryDirection Devices::RotaryEncoder::getDirection() const {
+RotaryDirection RotaryEncoder::getDirection() const {
     return _direction;
 }
 
-Devices::RotaryEncoder::~RotaryEncoder() {
+RotaryEncoder::~RotaryEncoder() {
     _direction = UNDEFINED;
 }
 
-Devices::PushRotaryEncoder::PushRotaryEncoder(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin)
+PushRotaryEncoder::PushRotaryEncoder(uint8_t DTPin, uint8_t CLKPin, uint8_t pushButtonPin)
     : RotaryEncoder(DTPin, CLKPin), _pushButtonPin(pushButtonPin) {
 }
 
-void Devices::PushRotaryEncoder::begin() {
+void PushRotaryEncoder::begin() {
     RotaryEncoder::begin();
     board_set_pin_mode(_pushButtonPin, INPUT_PULLUP);
 }
 
-void Devices::PushRotaryEncoder::startLoop() {
+void PushRotaryEncoder::startLoop() {
     RotaryEncoder::startLoop();
     _buttonPressed = false;
 
@@ -75,6 +79,6 @@ void Devices::PushRotaryEncoder::startLoop() {
     }
 }
 
-boolean Devices::PushRotaryEncoder::buttonPressed() const {
+boolean PushRotaryEncoder::buttonPressed() const {
     return _buttonPressed;
 }

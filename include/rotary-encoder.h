@@ -49,7 +49,7 @@ namespace Devices {
 
     private:
         boolean _buttonPressed{};
-        ulong_t _lastButtonPress = 0;
+        u_int64_t _lastButtonPress = 0;
     };
 }
 

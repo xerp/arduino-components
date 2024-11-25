@@ -8,6 +8,9 @@ project(ArduinoComponents)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Arduino AVR include files
+include_directories("$ENV{ARDUINO_INCLUDE_DIR}")
+
 # Include all header files from the root directory of the source
 include_directories(${CMAKE_SOURCE_DIR})
 

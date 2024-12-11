@@ -8,7 +8,7 @@ void board_init(const char *name) {
 }
 
 const char *board_get_name() {
-    if (board != None && board->name != None) {
+    if (board != nullptr && board->name != nullptr) {
         return board->name;
     }
 

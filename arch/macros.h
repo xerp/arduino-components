@@ -3,7 +3,7 @@
 
 #ifndef NONE_DECLARED
 #define NONE_DECLARED
-typedef void *None;
+#define None nullptr;
 #endif
 
 #ifndef NO_VALUE_DECLARED
